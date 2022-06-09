@@ -1,3 +1,5 @@
+> Modifications: 将翻译的结果按照句子分行，并且中英文加空格。
+
 # bob-plugin-deepl-translate
 
 这是一个 [Bob](https://ripperhe.gitee.io/bob/#/) 使用的 DeepL 翻译插件。
