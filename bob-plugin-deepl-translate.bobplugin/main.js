@@ -70,7 +70,7 @@ function translate(query, completion) {
             completion({
                 result: {
                     from: utils.langMapReverse.get(translations[0].detected_source_language),
-                    toParagraphs: translations.map((item) => insert_spacing(item.text.replace(/。/g, "\n"))),
+                    toParagraphs: translations.map((item) => insert_spacing(split_sentences(item.text))),
                 },
             });
         }
@@ -92,6 +92,10 @@ function insert_spacing(str) {
     var p1=/([A-Za-z_])([\u4e00-\u9fa5]+)/gi;
     var p2=/([\u4e00-\u9fa5]+)([A-Za-z_])/gi;
     return str.replace(p1, "$1 $2").replace(p2, "$1 $2")
+}
+function split_sentences(str) {
+    var p=/([A-Za-z\u4e00-\u9fa5]+)。([A-Za-z\u4e00-\u9fa5]+)/gi;
+    return str.replace(p, "$1。\n$2")
 }
 
 exports.supportLanguages = supportLanguages;
